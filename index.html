@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABOR & FUEGO | Gastronomía de Autor & Bodegón Moderno</title>
+    <meta name="description" content="Descubre Sabores auténticos que despiertan sentidos en SABOR & FUEGO. Cocina a la leña, ingredientes frescos y una experiencia gastronómica inolvidable.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-amber {
+            box-shadow: 0 0 50px -10px rgba(234, 88, 12, 0.25);
+        }
+        .glow-badge {
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- ==================== 1. HEADER / NAVBAR FLOTANTE ==================== -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-stone-900/80 backdrop-blur-md border-b border-stone-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Tipográfico con Ícono -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-950/50 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-fire-flame-curved text-stone-950 text-xl"></i>
+                    </div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                        SABOR <span class="text-orange-500 font-sans font-light">&</span> FUEGO
+                    </span>
+                </a>
+
+                <!-- Navegación Desktop -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#menu" class="text-sm font-medium text-stone-300 hover:text-orange-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 hover:after:w-full after:transition-all">Menú / Carta</a>
+                    <a href="#galeria" class="text-sm font-medium text-stone-300 hover:text-orange-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 hover:after:w-full after:transition-all">Galería</a>
+                    <a href="#experiencia" class="text-sm font-medium text-stone-300 hover:text-orange-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 hover:after:w-full after:transition-all">Experiencia</a>
+                    <a href="#ubicacion" class="text-sm font-medium text-stone-300 hover:text-orange-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 hover:after:w-full after:transition-all">Ubicación</a>
+                </nav>
+
+                <!-- Botón Principal (Reservar Mesa) -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#reservar" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 bg-[length:200%_auto] hover:bg-[position:right_center] rounded-full shadow-lg shadow-orange-950/60 hover:shadow-orange-600/30 hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fa-regular fa-calendar-check mr-2"></i>
+                        Reservar Mesa
+                    </a>
+                </div>
+
+                <!-- Botón Menú Mobile Hamburger -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-stone-400 hover:text-white hover:bg-stone-800/60 focus:outline-none transition-colors" aria-label="Abrir menú">
+                    <i id="menu-icon-open" class="fa-solid fa-bars text-xl"></i>
+                    <i id="menu-icon-close" class="fa-solid fa-xmark text-xl hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Mobile Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-stone-900/95 backdrop-blur-lg border-b border-stone-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#menu" class="block px-3 py-2 rounded-lg text-base font-medium text-stone-200 hover:bg-stone-800 hover:text-orange-400 transition-colors">Menú / Carta</a>
+            <a href="#galeria" class="block px-3 py-2 rounded-lg text-base font-medium text-stone-200 hover:bg-stone-800 hover:text-orange-400 transition-colors">Galería</a>
+            <a href="#experiencia" class="block px-3 py-2 rounded-lg text-base font-medium text-stone-200 hover:bg-stone-800 hover:text-orange-400 transition-colors">Experiencia</a>
+            <a href="#ubicacion" class="block px-3 py-2 rounded-lg text-base font-medium text-stone-200 hover:bg-stone-800 hover:text-orange-400 transition-colors">Ubicación</a>
+            <div class="pt-2">
+                <a href="#reservar" class="w-full inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-amber-600 to-orange-600 rounded-full shadow-lg shadow-orange-950/60">
+                    <i class="fa-regular fa-calendar-check mr-2"></i>
+                    Reservar Mesa
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== 2. HERO SECTION IMMERSIVO ==================== -->
+    <section class="relative min-h-screen bg-stone-900 text-stone-100 pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center overflow-hidden">
+        
+        <!-- Elementos Decorativos de Fondo (Luces Glow & Patrón) -->
+        <div class="absolute top-1/4 left-0 -translate-x-1/2 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#292524_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Columna Izquierda: Mensaje de Impacto & Call To Actions -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    
+                    <!-- Badge Chico -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                        <i class="fa-solid fa-fire text-orange-500 text-xs"></i>
+                        <span>GASTRONOMÍA DE AUTOR</span>
+                    </div>
+
+                    <!-- Título Gigante de Impacto -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-extrabold tracking-tight text-white leading-[1.1]">
+                        Sabores auténticos que <span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-clip-text text-transparent italic font-normal">despiertan sentidos</span>
+                    </h1>
+
+                    <!-- Párrafo Descriptivo -->
+                    <p class="text-stone-300 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Fusión sublime entre el ritual ancestral de la cocina a la leña, cortes seleccionados de autor e ingredientes de huerta propia. Una experiencia gastronómica inmersiva diseñada para cautivar el paladar.
+                    </p>
+
+                    <!-- Botones de Acción -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <!-- Botón Principal Terracota / Naranja -->
+                        <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl shadow-xl shadow-orange-950/80 hover:shadow-orange-600/40 hover:-translate-y-1 transition-all duration-300">
+                            <span>Ver Carta Digital</span>
+                            <i class="fa-solid fa-utensils text-amber-200"></i>
+                        </a>
+
+                        <!-- Botón Secundario Outline -->
+                        <a href="#galeria" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-stone-200 hover:text-white bg-stone-800/40 hover:bg-stone-800/80 border border-stone-700/80 hover:border-amber-500/50 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5">
+                            <i class="fa-regular fa-image text-orange-400"></i>
+                            <span>Ver Galería</span>
+                        </a>
+                    </div>
+
+                    <!-- Highlights Rápidos -->
+                    <div class="pt-6 border-t border-stone-800/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-stone-800/80 border border-stone-700/60 flex items-center justify-center text-amber-500">
+                                <i class="fa-solid fa-tree text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-400 font-medium">Cocción</p>
+                                <p class="text-sm font-semibold text-stone-200">100% a Leña</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-stone-800/80 border border-stone-700/60 flex items-center justify-center text-amber-500">
+                                <i class="fa-solid fa-leaf text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-400 font-medium">Insumos</p>
+                                <p class="text-sm font-semibold text-stone-200">Orgánicos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-stone-800/80 border border-stone-700/60 flex items-center justify-center text-amber-500">
+                                <i class="fa-solid fa-wine-glass text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-400 font-medium">Cava</p>
+                                <p class="text-sm font-semibold text-stone-200">+150 Etiquetas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Columna Derecha: Imagen Orgánica & Insignia Flotante -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    
+                    <div class="relative w-full max-w-md lg:max-w-none aspect-square">
+                        
+                        <!-- Resplandor de Fondo -->
+                        <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-amber-600/30 to-orange-600/30 blur-2xl opacity-75"></div>
+                        
+                        <!-- Contenedor Principal de la Imagen con Bordes Redondeados (rounded-3xl) -->
+                        <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-stone-700/60 shadow-2xl bg-stone-800 group">
+                            <img 
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" 
+                                alt="Plato Gourmet de Autor - Sabor y Fuego" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                loading="eager"
+                            />
+                            <!-- Overlay Gradiente sutil -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent"></div>
+                        </div>
+
+                        <!-- Insignia Flotante: Plato Estrella del Mes (5 estrellas fa-star amber-400) -->
+                        <div class="absolute -bottom-6 -left-2 sm:-left-6 bg-stone-900/90 backdrop-blur-xl border border-stone-700/80 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/80 flex items-center gap-4 glow-badge transform hover:scale-105 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-stone-950 font-bold text-xl shadow-md flex-shrink-0">
+                                <i class="fa-solid fa-award text-2xl text-stone-950"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 block">Plato Estrella del Mes</span>
+                                <h3 class="text-stone-100 font-bold text-sm sm:text-base leading-tight">Ojo de Bife a la Quebracho</h3>
+                                <div class="flex items-center gap-1.5 mt-1">
+                                    <div class="flex text-amber-400 text-xs gap-0.5">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-stone-400 font-medium">5.0 (148 reseñas)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tag Secundario Flotante Superior -->
+                        <div class="absolute -top-4 -right-2 sm:-right-4 bg-stone-950/80 backdrop-blur-md border border-stone-800 px-4 py-2 rounded-full text-xs font-medium text-stone-300 shadow-xl flex items-center gap-2">
+                            <i class="fa-solid fa-fire-burner text-orange-500"></i>
+                            <span>Chef Exec. Matías S.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para Menú Mobile -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIconOpen.classList.add('hidden');
+                    menuIconClose.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
