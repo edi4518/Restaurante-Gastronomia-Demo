@@ -1008,7 +1008,7 @@
                         <a href="#" class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-800 flex items-center justify-center hover:border-amber-500/50 transition-all" aria-label="Instagram"><i class="fa-brands fa-instagram text-xl text-stone-300 hover:text-amber-500 transition-colors"></i></a>
                         <a href="#" class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-800 flex items-center justify-center hover:border-amber-500/50 transition-all" aria-label="TikTok"><i class="fa-brands fa-tiktok text-xl text-stone-300 hover:text-amber-500 transition-colors"></i></a>
                         <a href="#" class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-800 flex items-center justify-center hover:border-amber-500/50 transition-all" aria-label="Facebook"><i class="fa-brands fa-facebook-f text-xl text-stone-300 hover:text-amber-500 transition-colors"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-800 flex items-center justify-center hover:border-amber-500/50 transition-all" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-xl text-stone-300 hover:text-amber-500 transition-colors"></i></a>
+                        <a href="https://wa.me/541155559999?text=Hola!%20Quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-800 flex items-center justify-center hover:border-amber-500/50 transition-all" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-xl text-stone-300 hover:text-amber-500 transition-colors"></i></a>
                     </div>
                     <p class="text-xs text-stone-500">Miércoles a Domingos 19:30 a 01:00 hs</p>
                 </div>
@@ -1035,6 +1035,72 @@
             <i class="fa-brands fa-whatsapp"></i>
         </div>
     </a>
+
+    <!-- ==================== BOTÓN FLOTANTE DEL CARRITO (ESQUINA INFERIOR IZQUIERDA) ==================== -->
+    <button id="cart-drawer-btn" type="button" class="fixed bottom-6 left-6 z-50 group flex items-center gap-3 bg-stone-900/95 border border-amber-500/50 hover:border-amber-500 text-stone-100 px-4 py-3 rounded-full shadow-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 active:scale-95" aria-label="Abrir Carrito de Compras">
+        <div class="relative flex items-center justify-center">
+            <i class="fa-solid fa-cart-shopping text-amber-500 text-xl"></i>
+            <span id="cart-badge" class="absolute -top-2.5 -right-2.5 bg-orange-600 text-white font-extrabold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+        </div>
+        <div class="text-left hidden sm:block">
+            <span class="text-[10px] uppercase font-semibold text-stone-400 block leading-tight">Mi Pedido</span>
+            <span id="cart-total-display" class="text-xs font-bold text-amber-400 leading-tight">$0</span>
+        </div>
+    </button>
+
+    <!-- ==================== DRAWER / MODAL DEL CARRITO ==================== -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden transition-opacity duration-300">
+        <!-- Backdrop Overlay -->
+        <div id="cart-drawer-overlay" class="absolute inset-0 bg-stone-950/80 backdrop-blur-sm"></div>
+
+        <!-- Panel Lateral Slide-Over -->
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-stone-900 border-l border-stone-800 text-stone-100 shadow-2xl flex flex-col justify-between z-10">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-stone-800 flex items-center justify-between bg-stone-950/50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold text-lg">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-serif font-bold text-white">Tu Pedido</h3>
+                            <p class="text-xs text-stone-400">Resumen para enviar por WhatsApp</p>
+                        </div>
+                    </div>
+                    <button id="cart-drawer-close" type="button" class="w-9 h-9 rounded-xl bg-stone-800 text-stone-400 hover:text-white hover:bg-stone-700 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Body (Lista de Productos) -->
+                <div id="cart-items-container" class="p-6 space-y-4 overflow-y-auto flex-grow">
+                    <!-- Estado Vacío -->
+                    <div id="cart-empty-state" class="text-center py-12 space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-stone-800/80 flex items-center justify-center text-stone-500 mx-auto text-2xl">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <h4 class="text-base font-semibold text-stone-300">Tu carrito está vacío</h4>
+                        <p class="text-xs text-stone-500 max-w-xs mx-auto">Explora nuestra Carta Digital y agrega tus platos preferidos para armar tu pedido.</p>
+                    </div>
+                </div>
+
+                <!-- Drawer Footer (Subtotal & Botón WhatsApp) -->
+                <div class="p-6 border-t border-stone-800 bg-stone-950/80 space-y-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-stone-400 font-medium">Subtotal Acumulado</span>
+                        <span id="cart-drawer-subtotal" class="text-xl font-extrabold text-amber-400">$0</span>
+                    </div>
+
+                    <button id="send-whatsapp-order-btn" type="button" class="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold rounded-2xl shadow-xl shadow-green-950/80 transition-all duration-300 flex items-center justify-center gap-3 text-base">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Enviar Pedido Completo por WhatsApp</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- Vinculación del script independiente -->
     <script src="script.js"></script>

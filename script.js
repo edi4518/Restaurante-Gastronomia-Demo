@@ -1,6 +1,6 @@
 /**
  * SABOR & FUEGO — Script Principal
- * Lógica modular para Carrito de Compras, Filtrado de Menú, Reservas y WhatsApp
+ * Lógica modular para Carrito de Compras (Drawer), Filtrado de Menú, Reservas y WhatsApp
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,10 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== 1. ESTADO DEL CARRITO ====================
     let cart = [];
 
-    // Contenedores del Carrito en el DOM (Botón Flotante)
-    const whatsappBtn = document.querySelector('a[href*="wa.me"]');
+    // Elementos DOM del Carrito
+    const cartDrawerBtn = document.getElementById('cart-drawer-btn');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartDrawerClose = document.getElementById('cart-drawer-close');
+    const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartTotalDisplay = document.getElementById('cart-total-display');
+    const cartDrawerSubtotal = document.getElementById('cart-drawer-subtotal');
+    const sendWhatsAppBtn = document.getElementById('send-whatsapp-order-btn');
+    const cartGoToMenu = document.getElementById('cart-go-to-menu');
 
-    // ==================== 2. LÓGICA DEL CARRITO DE COMPRAS ====================
+    // ==================== 2. LÓGICA AUXILIAR Y CÁLCULOS ====================
 
     /**
      * Parsea un string de precio a número (Ej: "$18.500" -> 18500)
@@ -19,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function parsePrice(priceStr) {
         if (!priceStr) return 0;
         return parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
+    }
+
+    /**
+     * Formatea un número a string de moneda en ARS (Ej: 18500 -> "$18.500")
+     */
+    function formatCurrency(amount) {
+        return '$' + amount.toLocaleString('es-AR');
     }
 
     /**
@@ -32,52 +48,97 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { totalCount: 0, totalPrice: 0 });
     }
 
+    // ==================== 3. RENDERIZADO Y ACTUALIZACIÓN DEL DOM ====================
+
     /**
-     * Actualiza los enlaces de WhatsApp con el pedido detallado o la consulta general
+     * Renderiza los ítems del carrito y actualiza contadores
      */
-    function updateWhatsAppLinks() {
+    function renderCart() {
         const { totalCount, totalPrice } = calculateTotals();
-        let waUrl = "https://wa.me/541155559999?text=Hola!%20Quiero%20hacer%20una%20consulta";
 
-        if (totalCount > 0) {
-            let message = "🔥 *NUEVO PEDIDO EN SABOR & FUEGO* 🔥\n\n";
-            cart.forEach((item, index) => {
-                message += `${index + 1}. *${item.quantity}x* ${item.name} — $${(item.price * item.quantity).toLocaleString('es-AR')}\n`;
-            });
-            message += `\n💰 *Total del Pedido:* $${totalPrice.toLocaleString('es-AR')}\n`;
-            message += "📍 *Dirección de Entrega / Consulta:*";
+        // Actualizar Badge y Display de Totales
+        if (cartBadge) cartBadge.textContent = totalCount;
+        if (cartTotalDisplay) cartTotalDisplay.textContent = formatCurrency(totalPrice);
+        if (cartDrawerSubtotal) cartDrawerSubtotal.textContent = formatCurrency(totalPrice);
 
-            waUrl = `https://wa.me/541155559999?text=${encodeURIComponent(message)}`;
-        }
-
-        // Actualizar todos los botones de WhatsApp
-        const waLinks = document.querySelectorAll('a[href*="wa.me"]');
-        waLinks.forEach(link => {
-            link.href = waUrl;
-        });
-
-        // Actualizar tooltip flotante si existe
-        const tooltip = document.querySelector('#cart-tooltip');
-        if (tooltip) {
-            if (totalCount > 0) {
-                tooltip.innerHTML = `<i class="fa-solid fa-cart-shopping text-amber-400 mr-1.5"></i> Pedido (${totalCount}) — $${totalPrice.toLocaleString('es-AR')}`;
+        // Renderizar lista en el Drawer
+        if (cartItemsContainer) {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div id="cart-empty-state" class="text-center py-12 space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-stone-800/80 flex items-center justify-center text-stone-500 mx-auto text-2xl">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <h4 class="text-base font-semibold text-stone-300">Tu carrito está vacío</h4>
+                        <p class="text-xs text-stone-500 max-w-xs mx-auto">Explora nuestra Carta Digital y agrega tus platos preferidos para armar tu pedido.</p>
+                    </div>
+                `;
             } else {
-                tooltip.innerHTML = `<i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5 text-sm"></i> Hacer pedido / Consulta`;
+                cartItemsContainer.innerHTML = cart.map((item, index) => `
+                    <div class="bg-stone-800/60 border border-stone-700/60 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-md">
+                        <div class="flex-grow">
+                            <h4 class="text-sm font-bold text-white leading-tight">${item.name}</h4>
+                            <p class="text-xs text-amber-400 font-semibold mt-1">${formatCurrency(item.price)} c/u</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center bg-stone-900 border border-stone-700 rounded-xl p-1">
+                                <button type="button" data-index="${index}" class="btn-decrease w-6 h-6 rounded-lg bg-stone-800 text-stone-300 hover:text-white flex items-center justify-center text-xs transition-colors">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="w-7 text-center text-xs font-bold text-white">${item.quantity}</span>
+                                <button type="button" data-index="${index}" class="btn-increase w-6 h-6 rounded-lg bg-stone-800 text-stone-300 hover:text-white flex items-center justify-center text-xs transition-colors">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                            <button type="button" data-index="${index}" class="btn-remove w-8 h-8 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center text-xs transition-colors">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Asignar listeners para incrementar, decrementar y eliminar
+                cartItemsContainer.querySelectorAll('.btn-increase').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                        cart[idx].quantity += 1;
+                        renderCart();
+                    });
+                });
+
+                cartItemsContainer.querySelectorAll('.btn-decrease').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                        if (cart[idx].quantity > 1) {
+                            cart[idx].quantity -= 1;
+                        } else {
+                            cart.splice(idx, 1);
+                        }
+                        renderCart();
+                    });
+                });
+
+                cartItemsContainer.querySelectorAll('.btn-remove').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                        cart.splice(idx, 1);
+                        renderCart();
+                    });
+                });
             }
         }
     }
 
     /**
-     * Muestra una notificación emergente (Toast) al agregar un plato
+     * Muestra un aviso emergente Toast al agregar un plato
      */
     function showToast(dishName, priceStr) {
-        // Remover toast previo si existe
         const existingToast = document.getElementById('cart-toast');
         if (existingToast) existingToast.remove();
 
         const toast = document.createElement('div');
         toast.id = 'cart-toast';
-        toast.className = 'fixed bottom-24 right-6 z-50 bg-stone-900/95 border border-amber-500/50 text-white px-5 py-3.5 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3 animate-fade-in transition-all duration-300';
+        toast.className = 'fixed bottom-24 left-6 z-50 bg-stone-900/95 border border-amber-500/50 text-white px-5 py-3.5 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3 animate-fade-in transition-all duration-300';
         toast.innerHTML = `
             <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-stone-950 font-bold">
                 <i class="fa-solid fa-check text-sm"></i>
@@ -98,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Agrega un plato al carrito
+     * Agrega un plato al carrito o incrementa la cantidad si ya existe
      */
     function addToCart(dishName, priceStr) {
         const price = parsePrice(priceStr);
@@ -114,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        updateWhatsAppLinks();
+        renderCart();
         showToast(dishName, priceStr);
     }
 
@@ -137,7 +198,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==================== 3. NAVEGACIÓN MOBILE ====================
+    // ==================== 4. CONTROL DEL DRAWER / MODAL DEL CARRITO ====================
+    function openCartDrawer() {
+        if (cartDrawer) {
+            cartDrawer.classList.remove('hidden');
+        }
+    }
+
+    function closeCartDrawer() {
+        if (cartDrawer) {
+            cartDrawer.classList.add('hidden');
+        }
+    }
+
+    if (cartDrawerBtn) cartDrawerBtn.addEventListener('click', openCartDrawer);
+    if (cartDrawerClose) cartDrawerClose.addEventListener('click', closeCartDrawer);
+    if (cartDrawerOverlay) cartDrawerOverlay.addEventListener('click', closeCartDrawer);
+
+    // ==================== 5. ENVÍO DEL PEDIDO POR WHATSAPP ====================
+    function sendWhatsAppOrder() {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío. Agrega algunos platos antes de enviar el pedido por WhatsApp.');
+            return;
+        }
+
+        const { totalPrice } = calculateTotals();
+        let message = "Hola! Quisiera realizar el siguiente pedido en SABOR & FUEGO:\n\n";
+
+        cart.forEach(item => {
+            const subtotal = item.price * item.quantity;
+            message += `- ${item.quantity}x ${item.name} ($${subtotal.toLocaleString('es-AR')})\n`;
+        });
+
+        message += `\n*Total:* $${totalPrice.toLocaleString('es-AR')}`;
+
+        const waUrl = `https://wa.me/541155559999?text=${encodeURIComponent(message)}`;
+        window.open(waUrl, '_blank');
+    }
+
+    if (sendWhatsAppBtn) {
+        sendWhatsAppBtn.addEventListener('click', sendWhatsAppOrder);
+    }
+
+    // ==================== 6. NAVEGACIÓN MOBILE ====================
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIconOpen = document.getElementById('menu-icon-open');
@@ -157,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Cerrar menú mobile al hacer clic en un enlace
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -167,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== 4. FILTRADO DE MENÚ POR CATEGORÍA ====================
+    // ==================== 7. FILTRADO DE MENÚ POR CATEGORÍA ====================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const dishCards = document.querySelectorAll('.dish-card');
 
@@ -192,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==================== 5. FORMULARIO DE RESERVA ====================
+    // ==================== 8. FORMULARIO DE RESERVA ====================
     const resForm = document.getElementById('reservation-form');
     if (resForm) {
         resForm.addEventListener('submit', (e) => {
@@ -203,6 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicializar links de WhatsApp
-    updateWhatsAppLinks();
+    // Inicializar renderizado del carrito
+    renderCart();
 });
