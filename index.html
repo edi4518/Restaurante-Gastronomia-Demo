@@ -227,8 +227,325 @@
         </div>
     </section>
 
-    <!-- Script para Menú Mobile -->
+    <!-- ==================== 3. NUESTRA CARTA DIGITAL ==================== -->
+    <section id="menu" class="relative bg-stone-900 text-stone-100 py-20 lg:py-28 border-t border-stone-800/80">
+        
+        <!-- Elemento de Fondo -->
+        <div class="absolute inset-0 bg-[radial-gradient(#292524_1px,transparent_1px)] [background-size:32px_32px] opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Encabezado de Sección -->
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-amber-500 uppercase tracking-widest font-semibold text-xs sm:text-sm block">
+                    MENÚ Y ESPECIALIDADES
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight">
+                    Descubrí Nuestra Carta
+                </h2>
+                <p class="text-stone-400 text-base sm:text-lg font-light max-w-xl mx-auto">
+                    Selección exclusiva de platillos elaborados al momento con ingredientes frescos, pasión gastronómica y el toque inconfundible de nuestras brasas.
+                </p>
+            </div>
+
+            <!-- Barra de Filtros / Pestañas de Categoría -->
+            <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mt-10 mb-14" id="menu-filters">
+                <button data-filter="all" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-amber-600 text-white shadow-lg shadow-amber-950/60 ring-2 ring-amber-500/50">
+                    Todos
+                </button>
+                <button data-filter="entradas" class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-stone-800/80 text-stone-300 hover:text-white hover:bg-stone-700/80 border border-stone-700/50">
+                    Entradas & Tapas
+                </button>
+                <button data-filter="principales" class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-stone-800/80 text-stone-300 hover:text-white hover:bg-stone-700/80 border border-stone-700/50">
+                    Platos Principales
+                </button>
+                <button data-filter="postres" class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-stone-800/80 text-stone-300 hover:text-white hover:bg-stone-700/80 border border-stone-700/50">
+                    Postres de Autor
+                </button>
+                <button data-filter="bebidas" class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-stone-800/80 text-stone-300 hover:text-white hover:bg-stone-700/80 border border-stone-700/50">
+                    Bebidas & Coctelería
+                </button>
+            </div>
+
+            <!-- Grilla de Platos Destacados (3 Cols Desktop, 1 Col Mobile) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                
+                <!-- Plato 1: Bife de Chorizo a las Brasas -->
+                <div class="dish-card principales bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Bife de Chorizo a las Brasas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Badge Recomendado -->
+                            <span class="absolute top-3 left-3 bg-orange-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                                <i class="fa-solid fa-fire mr-1 text-amber-200"></i> Recomendado
+                            </span>
+                            
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $18.500
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Bife de Chorizo a las Brasas</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Corte jugoso de 400g cocido a fuego lento de quebracho, servido con papas rústicas perfumadas al romero y chimichurri casero.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 2: Pasta Artesanal Fettuccine -->
+                <div class="dish-card principales bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281290?auto=format&fit=crop&w=600&q=80" alt="Pasta Artesanal Fettuccine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Badge Chef Special -->
+                            <span class="absolute top-3 left-3 bg-stone-900/90 border border-stone-700 backdrop-blur-md text-amber-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                                <i class="fa-solid fa-wheat-awn mr-1"></i> Hecho en Casa
+                            </span>
+
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $14.200
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Pasta Artesanal Fettuccine</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Pastas frescas amasadas diariamente, salteadas con crema suave de trufa negra, hongos silvestres recolectados y queso sardo estacionado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 3: Empanadas Cortadas a Cuchillo -->
+                <div class="dish-card entradas bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Empanadas Cortadas a Cuchillo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Badge Entrada Popular -->
+                            <span class="absolute top-3 left-3 bg-amber-500/90 text-stone-950 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-md backdrop-blur-sm">
+                                <i class="fa-solid fa-star mr-1"></i> Entrada Popular
+                            </span>
+
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $6.800
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Empanadas Cortadas a Cuchillo</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Masa casera hojaldrada al horno de barro, rellenas de carne jugosa de novillo cortada a mano y especias criollas seleccionadas (3 unidades).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 4: Hamburguesa Smoked Bacon -->
+                <div class="dish-card principales bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Hamburguesa Smoked Bacon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $12.900
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Hamburguesa Smoked Bacon</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Doble medallón smash de blend Angus 100%, queso cheddar ahumado derretido, panceta crocante, cebolla caramelizada y alioli artesanal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 5: Volcán de Chocolate Amargo -->
+                <div class="dish-card postres bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Volcán de Chocolate Amargo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Badge Postre de Autor -->
+                            <span class="absolute top-3 left-3 bg-amber-500/90 text-stone-950 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-md backdrop-blur-sm">
+                                <i class="fa-solid fa-spoon mr-1"></i> Postre de Autor
+                            </span>
+
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $7.500
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Volcán de Chocolate Amargo</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Bizcocho de chocolate 70% cacao ecuatoriano con corazón fluido caliente, acompañado de una bocha de helado de crema americana artesanal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 6: Trago de Autor: Gin Tonic Botánico -->
+                <div class="dish-card bebidas bg-stone-800/60 border border-stone-700/60 rounded-2xl overflow-hidden hover:border-amber-500/50 hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <!-- Foto & Badges -->
+                        <div class="relative h-60 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Gin Tonic Botánico" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Badge Cóctel Signature -->
+                            <span class="absolute top-3 left-3 bg-stone-900/90 border border-stone-700 backdrop-blur-md text-amber-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                                <i class="fa-solid fa-martini-glass-citrus mr-1"></i> Coctelería
+                            </span>
+
+                            <!-- Precio Flotante -->
+                            <span class="absolute bottom-3 right-3 bg-amber-500 text-stone-950 font-extrabold px-3.5 py-1 rounded-full text-base shadow-lg">
+                                $8.200
+                            </span>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Trago de Autor: Gin Tonic Botánico</h3>
+                            </div>
+                            <p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Gin nacional premiado infusionado con frutos rojos de la Patagonia, agua tónica premium, bayas de enebro tostado y rama de romero fresco.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer & Botón -->
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="border-t border-stone-700/60 pt-4">
+                            <button class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-stone-700/40 hover:bg-gradient-to-r hover:from-amber-600 hover:to-orange-600 text-stone-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                                <span>Agregar al Pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Banner Inferior: Carta Completa en PDF / WhatsApp -->
+            <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 mt-16 shadow-2xl shadow-orange-950/60 border border-amber-400/30 relative overflow-hidden group">
+                
+                <!-- Efecto de Brillo Sutil -->
+                <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="space-y-2 text-center md:text-left z-10">
+                    <div class="inline-flex items-center gap-2 text-amber-200 text-xs font-semibold uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Menú Extendido & Cava de Vinos</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white leading-tight">
+                        ¿Querés ver el menú completo con precios actualizados y carta de vinos?
+                    </h3>
+                    <p class="text-amber-100/90 text-sm font-light max-w-xl">
+                        Descargá nuestro archivo digital interactivo en formato PDF o consultanos directo por WhatsApp.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto z-10">
+                    <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-white text-stone-950 hover:bg-amber-50 font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                        <i class="fa-solid fa-file-pdf text-red-600 text-xl"></i>
+                        <span>Descargar Carta Digital (PDF)</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Script para Menú Mobile & Filtros de Categoría -->
     <script>
+        // Menú Mobile Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIconOpen = document.getElementById('menu-icon-open');
@@ -248,6 +565,31 @@
                 }
             });
         }
+
+        // Filtro interactivo de platos por categoría
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const dishCards = document.querySelectorAll('.dish-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-amber-600', 'text-white', 'shadow-lg', 'shadow-amber-950/60', 'ring-2', 'ring-amber-500/50');
+                    b.classList.add('bg-stone-800/80', 'text-stone-300', 'hover:text-white', 'hover:bg-stone-700/80', 'border', 'border-stone-700/50');
+                });
+
+                btn.classList.add('active', 'bg-amber-600', 'text-white', 'shadow-lg', 'shadow-amber-950/60', 'ring-2', 'ring-amber-500/50');
+                btn.classList.remove('bg-stone-800/80', 'text-stone-300', 'hover:text-white', 'hover:bg-stone-700/80', 'border', 'border-stone-700/50');
+
+                const filter = btn.getAttribute('data-filter');
+                dishCards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
