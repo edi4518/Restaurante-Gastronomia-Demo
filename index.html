@@ -543,7 +543,264 @@
         </div>
     </section>
 
-    <!-- Script para Menú Mobile & Filtros de Categoría -->
+    <!-- ==================== 4. NUESTRA EXPERIENCIA / GALERÍA ==================== -->
+    <section id="galeria" class="relative bg-stone-950 text-stone-100 py-20 lg:py-28 border-t border-stone-800/80">
+        
+        <!-- Ambient Light Glow -->
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-amber-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Encabezado de Sección -->
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+                <span class="text-amber-500 uppercase tracking-widest font-semibold text-xs sm:text-sm block">
+                    EL LUGAR
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight">
+                    Ambiente Cálido y Exclusivo
+                </h2>
+                <p class="text-stone-400 text-base sm:text-lg font-light max-w-xl mx-auto">
+                    Un espacio diseñado minuciosamente donde la arquitectura en madera y piedra se combina con tenue iluminación para crear veladas memorables.
+                </p>
+            </div>
+
+            <!-- Grilla Asimétrica de Fotos (Grid 4 Cols Desktop, 2 Tablet, 1 Mobile) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Foto 1 (Ocupa 2 columnas en desktop) -->
+                <div class="lg:col-span-2 relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-stone-800 group hover:border-amber-500/50 transition-all duration-300">
+                    <img 
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Salón Principal Luz Tenue - Sabor y Fuego" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1 block">Salón Central</span>
+                        <h3 class="text-xl font-bold text-white">Atmósfera Intimista & Luces Cálidas</h3>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Cocina a la leña / Parrilla -->
+                <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-stone-800 group hover:border-amber-500/50 transition-all duration-300">
+                    <img 
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" 
+                        alt="Cocina a la Leña y Parrilla de Autor" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1 block">Fuego Sagrado</span>
+                        <h3 class="text-lg font-bold text-white">Cocina a la Leña</h3>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Barra de Tragos & Coctelería -->
+                <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-stone-800 group hover:border-amber-500/50 transition-all duration-300">
+                    <img 
+                        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" 
+                        alt="Barra de Coctelería de Autor" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1 block">Cava & Bar</span>
+                        <h3 class="text-lg font-bold text-white">Coctelería Signature</h3>
+                    </div>
+                </div>
+
+                <!-- Foto 4: Mesa preparada para cena especial -->
+                <div class="lg:col-span-4 relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-stone-800 group hover:border-amber-500/50 transition-all duration-300">
+                    <img 
+                        src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Mesa Preparada para Cena Especial" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1 block">Experiencia Privada</span>
+                            <h3 class="text-xl font-bold text-white">Servicio Personalizado para Celebraciones</h3>
+                        </div>
+                        <span class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/30 backdrop-blur-md">
+                            <i class="fa-solid fa-wine-glass"></i> Cava Privada
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== 5. RESERVA TU MESA ==================== -->
+    <section id="reservar" class="relative bg-stone-900 text-stone-100 py-20 lg:py-28 border-t border-stone-800/80 overflow-hidden">
+        
+        <!-- Elementos Decorativos -->
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Información de Invitación & Ficha -->
+                <div class="lg:col-span-5 space-y-8">
+                    
+                    <div class="space-y-3">
+                        <span class="text-amber-500 uppercase tracking-widest font-semibold text-xs sm:text-sm block">
+                            VIVÍ LA EXPERIENCIA
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight leading-tight">
+                            Asegurá tu Lugar para una Noche Inolvidable
+                        </h2>
+                    </div>
+
+                    <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed">
+                        Te invitamos a disfrutar de una propuesta gastronómica única. Disponemos de mesas en salón principal, sector barra y terraza calefaccionada para eventos privados.
+                    </p>
+
+                    <!-- Ficha de Datos Clave -->
+                    <div class="space-y-5 pt-6 border-t border-stone-800">
+                        
+                        <div class="flex items-start gap-4" id="ubicacion">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-stone-200 font-bold text-base">Ubicación Exclusiva</h4>
+                                <p class="text-stone-400 text-sm font-light">Palermo Soho, Buenos Aires — Argentina</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-stone-200 font-bold text-base">Horarios de Atención</h4>
+                                <p class="text-stone-400 text-sm font-light">Miércoles a Domingos: 19:30 a 01:00 hs</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-stone-200 font-bold text-base">Teléfono & WhatsApp</h4>
+                                <p class="text-stone-400 text-sm font-light">+54 11 5555-9999 / reservas@saboryfuego.com</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Columna Derecha: Formulario de Reserva -->
+                <div class="lg:col-span-7">
+                    <div class="bg-stone-900/90 backdrop-blur-xl border border-stone-800 p-8 sm:p-10 rounded-3xl shadow-2xl shadow-black/80 relative">
+                        
+                        <div class="flex items-center justify-between mb-8 pb-4 border-b border-stone-800">
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-white">Completá los Datos de tu Reserva</h3>
+                                <p class="text-stone-400 text-xs sm:text-sm font-light mt-1">Reserva inmediata sin costo adicional</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500">
+                                <i class="fa-regular fa-calendar-check text-xl"></i>
+                            </div>
+                        </div>
+
+                        <form id="reservation-form" class="space-y-5">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                
+                                <!-- Nombre y Apellido -->
+                                <div>
+                                    <label for="res-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Nombre y Apellido *</label>
+                                    <div class="relative">
+                                        <input type="text" id="res-name" required placeholder="Ej: Martin Gomez" class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 placeholder-stone-500 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all" />
+                                    </div>
+                                </div>
+
+                                <!-- Teléfono / WhatsApp -->
+                                <div>
+                                    <label for="res-phone" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Teléfono / WhatsApp *</label>
+                                    <div class="relative">
+                                        <input type="tel" id="res-phone" required placeholder="Ej: +54 11 1234-5678" class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 placeholder-stone-500 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all" />
+                                    </div>
+                                </div>
+
+                                <!-- Cantidad de Personas -->
+                                <div>
+                                    <label for="res-guests" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Cantidad de Personas *</label>
+                                    <select id="res-guests" required class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+                                        <option value="2">2 Personas (Mesa Pareja)</option>
+                                        <option value="4">4 Personas (Mesa Familiar)</option>
+                                        <option value="6+">6+ Personas (Grupo)</option>
+                                        <option value="evento">Evento Especial / Privado</option>
+                                    </select>
+                                </div>
+
+                                <!-- Fecha de Reserva -->
+                                <div>
+                                    <label for="res-date" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Fecha de Reserva *</label>
+                                    <input type="date" id="res-date" required class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all" />
+                                </div>
+
+                                <!-- Horario Deseado -->
+                                <div class="sm:col-span-2">
+                                    <label for="res-time" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Horario Deseado *</label>
+                                    <select id="res-time" required class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+                                        <option value="20:00">20:00 hs — Primer Turno</option>
+                                        <option value="21:30">21:30 hs — Turno Central</option>
+                                        <option value="23:00">23:00 hs — Turno Nocturno</option>
+                                    </select>
+                                </div>
+
+                                <!-- Comentarios / Preferencias -->
+                                <div class="sm:col-span-2">
+                                    <label for="res-notes" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Comentarios / Preferencias</label>
+                                    <textarea id="res-notes" rows="3" placeholder="Contanos si festejás un cumpleaños, tenés alguna alergia alimentaria o preferís mesa cerca de la ventana..." class="w-full bg-stone-800/90 border border-stone-700/80 rounded-xl px-4 py-3 text-stone-100 placeholder-stone-500 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all resize-none"></textarea>
+                                </div>
+
+                            </div>
+
+                            <!-- Botón de Confirmación Principal -->
+                            <button type="submit" class="w-full py-4 px-6 bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold rounded-2xl shadow-xl shadow-orange-950/80 hover:shadow-orange-600/40 transition-all duration-300 transform hover:-translate-y-0.5 mt-4 flex items-center justify-center gap-3 text-base">
+                                <i class="fa-solid fa-calendar-check text-xl"></i>
+                                <span>Confirmar Reserva de Mesa</span>
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-stone-950 font-bold">
+                    <i class="fa-solid fa-fire-flame-curved text-sm"></i>
+                </div>
+                <span class="font-serif text-lg font-bold text-white">SABOR & FUEGO</span>
+            </div>
+            <p class="text-xs text-stone-500 font-light">
+                &copy; 2026 SABOR & FUEGO — Gastronomía de Autor & Bodegón Moderno. Todos los derechos reservados.
+            </p>
+            <div class="flex items-center gap-4 text-stone-400 text-lg">
+                <a href="#" class="hover:text-amber-400 transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-amber-400 transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-amber-400 transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para Menú Mobile, Filtros & Reserva -->
     <script>
         // Menú Mobile Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -590,6 +847,17 @@
                 });
             });
         });
+
+        // Formulario de Reserva Handling
+        const resForm = document.getElementById('reservation-form');
+        if (resForm) {
+            resForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('res-name').value;
+                alert(`¡Gracias ${name}! Tu solicitud de reserva ha sido recibida con éxito. Nos pondremos en contacto a la brevedad para confirmar tu mesa.`);
+                resForm.reset();
+            });
+        }
     </script>
 </body>
 </html>
